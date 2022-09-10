@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI</title> 
+        <style>
+            .BMII{
+               
+                transform-origin:95% 45%;
+                transform:rotate(0deg) ;
+            }
+            form{
+                position: absolute;
+                left:10px;
+                top:400px;
+                font-family:cursive; 
+                font-size:large;
+                font-weight: bold;
+                color:#003366;
+          /**     background: grey;
+                border-radius:10px;
+                border-style: ridge;
+                border-color: aqua;**/
+            }
+        </style>
+        
+    </head>
+    
+    <body style="background:#FFB380">
+        <p id="out"></p>
+    <img id="BMI" src="img/BMI.png" style="display: block;position: absolute;top: 0px;left:25vw">
+    <img id="BMII" class="BMII" src="img/BMII.png" style="display: block;position: absolute;top: 210px;left:42vw">
+        <form>I'm the form<br>
+        <lable for="wt">Enter your weight in kilograms<lable>
+            <input id="wt" type="number"><br><br>
+         <lable for="ht">Enter your height in cm</lable>
+         <input id="ht" type="number"><br> <br>  
+         <input id="clc" type="button" value="Calculate" onclick="Calculate()">
+        
+        </form>   
+     
+        <script>
+      function Calculate(){
+          var BMI
+          if(isNaN(wt.value)||isNaN(ht.value))
+          alert("Please enter the height and the weight first")
+          else
+          if(wt.value==0 || ht.value==0)
+            alert("The height and the weight should be greater than zero")  
+            else{
+          BMI=wt.value/((ht.value/100)*(ht.value/100))
+          if(BMI>0){
+            switch((BMI<=18.5)?0:(25>=BMI&&BMI>18.5)?1:(30>=BMI&&BMI>25)?2:3)
+            {
+                case 0:document.getElementById("BMII").style.transform="rotate(20deg)"
+                break
+                case 1: document.getElementById("BMII").style.transform="rotate(45deg)"
+                break
+                case 2: document.getElementById("BMII").style.transform="rotate(90deg)"
+                break
+                case 3:document.getElementById("BMII").style.transform="rotate(135deg)"
+                break
+                default: break
+            }
+        }
+          } 
+          BMI="suhad"
+          document.getElementById("out").innerHTML=BMI  
+      }
+
+     
+        </script>
+    </body>
+    </html>
